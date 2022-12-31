@@ -1,12 +1,25 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl/intl.dart';
 
-class RegisterationScreen extends StatelessWidget {
+import '../l10n/gen_l10n/app_localizations.dart';
+
+class RegisterationScreen extends StatefulWidget {
   const RegisterationScreen({super.key});
 
-  Future<void> openCalender(BuildContext context) async {
+  @override
+  State<RegisterationScreen> createState() => _RegisterationScreenState();
+}
+
+class _RegisterationScreenState extends State<RegisterationScreen> {
+  final _dobController = TextEditingController();
+
+  @override
+  void dispose() {
+    _dobController.dispose();
+    super.dispose();
+  }
+
+  Future<String?> openCalender(BuildContext context) async {
     DateTime? pickedDate = await showDatePicker(
         context: context, //context of current state
         initialDate: DateTime.now(),
@@ -15,9 +28,9 @@ class RegisterationScreen extends StatelessWidget {
         lastDate: DateTime(2101));
 
     if (pickedDate != null) {
-      print(pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+      return DateFormat.yMd('ur').format(pickedDate);
     } else {
-      print("Date is not selected");
+      return null;
     }
   }
 
@@ -36,7 +49,7 @@ class RegisterationScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Registeration Form',
+                    AppLocalizations.of(context)!.registrationForm,
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -48,7 +61,7 @@ class RegisterationScreen extends StatelessWidget {
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: 'Name',
+                      hintText: AppLocalizations.of(context)!.name,
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -57,7 +70,7 @@ class RegisterationScreen extends StatelessWidget {
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: 'Phone Number',
+                      hintText: AppLocalizations.of(context)!.phoneNumber,
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -66,7 +79,7 @@ class RegisterationScreen extends StatelessWidget {
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: 'Email',
+                      hintText: AppLocalizations.of(context)!.email,
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -75,21 +88,25 @@ class RegisterationScreen extends StatelessWidget {
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: 'Address',
+                      hintText: AppLocalizations.of(context)!.address,
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   TextField(
+                    controller: _dobController,
                     onTap: () async {
-                      openCalender(context);
+                      String? datetime = await openCalender(context);
+                      if (datetime != null) {
+                        _dobController.text = datetime;
+                      }
                     },
                     readOnly: true,
                     decoration: InputDecoration(
-                      hintText: 'Date of birth',
-                      border: OutlineInputBorder(),
+                      hintText: AppLocalizations.of(context)!.dateOfBirth,
+                      border: const OutlineInputBorder(),
                     ),
                   ),
                 ],
@@ -103,7 +120,7 @@ class RegisterationScreen extends StatelessWidget {
                     borderRadius: BorderRadius.zero),
                 minimumSize: const Size(double.infinity, 50)),
             onPressed: () {},
-            child: const Text('Submit'))
+            child: Text(AppLocalizations.of(context)!.submit))
       ],
     );
   }

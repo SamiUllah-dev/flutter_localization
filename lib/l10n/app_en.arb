@@ -1,0 +1,10 @@
+{
+    "localization" : "Localization",
+    "registrationForm" : "Registration Form",
+    "name" : "Name",
+    "phoneNumber" : "Phone Number",
+    "email" : "Email",
+    "address" : "Address",
+    "dateOfBirth" : "Date of birth",
+    "submit" : "Submit"
+}
