@@ -6,11 +6,11 @@ import 'package:flutter_localization_app/screens/registeration_screen.dart';
 import '../l10n/gen_l10n/app_localizations.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(translation(context).registrationForm),
+        title: Text(translation(context).localization),
         actions: [
           DropdownButton<Language>(
             value: dropdownvalue,

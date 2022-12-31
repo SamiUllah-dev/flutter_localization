@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../l10n/gen_l10n/app_localizations.dart';
+import '../localization/constants.dart';
 
 class RegisterationScreen extends StatefulWidget {
   const RegisterationScreen({super.key});
@@ -49,47 +49,47 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    AppLocalizations.of(context)!.registrationForm,
-                    style: TextStyle(
+                    translation(context).registrationForm,
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.black54,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)!.name,
-                      border: OutlineInputBorder(),
+                      hintText: translation(context).name,
+                      border: const OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)!.phoneNumber,
-                      border: OutlineInputBorder(),
+                      hintText: translation(context).phoneNumber,
+                      border: const OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)!.email,
-                      border: OutlineInputBorder(),
+                      hintText: translation(context).email,
+                      border: const OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)!.address,
-                      border: OutlineInputBorder(),
+                      hintText: translation(context).address,
+                      border: const OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(
@@ -105,7 +105,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                     },
                     readOnly: true,
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)!.dateOfBirth,
+                      hintText: translation(context).dateOfBirth,
                       border: const OutlineInputBorder(),
                     ),
                   ),
@@ -120,7 +120,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                     borderRadius: BorderRadius.zero),
                 minimumSize: const Size(double.infinity, 50)),
             onPressed: () {},
-            child: Text(AppLocalizations.of(context)!.submit))
+            child: Text(translation(context).submit))
       ],
     );
   }
