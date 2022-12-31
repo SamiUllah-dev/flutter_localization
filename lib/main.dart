@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization_app/screens/registeration_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,9 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: const Center(
-        child: Text('Localization'),
-      ),
+      body: const RegisterationScreen(),
     );
   }
 }
